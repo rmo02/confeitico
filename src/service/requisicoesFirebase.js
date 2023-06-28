@@ -1,5 +1,6 @@
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { auth } from "../configs/firebase";
-import { createUserWithEmailAndPassword, AuthErrorCodes } from "firebase/auth";
+import { createUserWithEmailAndPassword, AuthErrorCodes, signInWithEmailAndPassword } from "firebase/auth";
 
 function errosFirebase(error){
   let mensagem = '';
@@ -28,6 +29,20 @@ export async function cadastrar(email, senha) {
   .catch((error) => {
     console.log(error);
     return errosFirebase(error)
+  });
+  return resultado
+}
+
+export async function logar(email, senha) {
+  const resultado = await signInWithEmailAndPassword(auth, email, senha)
+  .then((dadosDoUsuario) => {
+    console.log('usuário logado',dadosDoUsuario['_tokenResponse'])
+    return "sucesso"
+  })
+  .catch((error) => {
+    console.log(error);
+    // return errosFirebase(error)
+    return  "Erro ao logar"
   });
 
   return resultado

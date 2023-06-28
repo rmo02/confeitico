@@ -4,7 +4,7 @@ import Cabecalho from '../../components/Cabecalho';
 import Produto from '../../components/Produtos';
 import estilos from './estilos';
 
-export default function Principal({ navigation }) {
+export default function HomePage({ navigation }) {
 
   return (
     <View style={estilos.container}>
