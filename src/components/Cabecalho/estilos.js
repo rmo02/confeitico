@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import { THEME } from "../../theme";
 
 export default StyleSheet.create({
   container: {
@@ -11,7 +12,7 @@ export default StyleSheet.create({
   },
   texto: {
     fontSize: 20,
-    fontFamily: "Roboto",
+    fontFamily: THEME.fonts.bold,
     fontWeight: "500",
     color: "#fff",
   },

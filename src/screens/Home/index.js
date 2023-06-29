@@ -3,12 +3,20 @@ import { View, Text } from 'react-native';
 import Cabecalho from '../../components/Cabecalho';
 import Produto from '../../components/Produtos';
 import estilos from './estilos';
+import { auth } from '../../configs/firebase';
 
 export default function HomePage({ navigation }) {
 
+  const user = auth.currentUser;
+  console.log(user)
+
+  function deslogar(){
+    auth.signOut();
+  }
+
   return (
     <View style={estilos.container}>
-      <Cabecalho navigation={navigation} />
+      <Cabecalho logout={deslogar} />
       <Text style={estilos.texto}>Usuário: teste@email.com</Text>
 
       <Produto nome="Tênis" preco="200,00" />
